@@ -6,13 +6,21 @@ public class ObjSpawner : MonoBehaviour
 {
     public GameObject[] dropObjs;
     float time = 0f;
+    float randTime;
+
+    void Start()
+    {
+        randTime = Random.Range(0.7f, 1f);
+    }
+
     void Update()
     {
         time += Time.deltaTime;
 
-        if(time >= 0.5f)
+        if(time >= randTime)
         {
             SpawnObj();
+            randTime = Random.Range(0.7f, 1f);
             time = 0f;
         }
     }

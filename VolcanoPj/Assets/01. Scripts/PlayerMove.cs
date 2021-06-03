@@ -40,14 +40,23 @@ public class PlayerMove : MonoBehaviour
         {
             buttons[1].isPush = false;
         }
+
+        if(Input.GetKey(KeyCode.Space))
+        {
+            buttons[3].isPush = true;
+        }
+        else
+        {
+            buttons[3].isPush = false;
+        }
 #endif
 
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        if (pos.x < 0.1f)
-            pos.x = 0.1f;
+        if (pos.x < 0.08f)
+            pos.x = 0.08f;
 
-        if (pos.x > 0.9f)
-            pos.x = 0.9f;
+        if (pos.x > 0.92f)
+            pos.x = 0.92f;
 
         transform.position = Camera.main.ViewportToWorldPoint(pos);
 
@@ -57,15 +66,30 @@ public class PlayerMove : MonoBehaviour
             transform.Translate(Vector2.left * Time.deltaTime * moveSpeed);
             pos.x = Mathf.Clamp(pos.x, -2f, 2f);
         }
+        else
+        {
+
+        }
+
         if (buttons[1].isPush)
         {
             transform.Translate(Vector2.right * Time.deltaTime * moveSpeed);
             pos.x = Mathf.Clamp(pos.x, -2f, 2f);
         }
+        else
+        {
+
+        }
+
         if (buttons[2].isPush)
         {
 
         }
+        else
+        {
+
+        }
+
         if (buttons[3].isPush)
         {
             if (!isJump)
@@ -73,6 +97,10 @@ public class PlayerMove : MonoBehaviour
                 JumpTrue();
                 isJump = true;
             }
+        }
+        else
+        {
+            
         }
     }
 
