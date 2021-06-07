@@ -13,10 +13,14 @@ public class PlayerMove : MonoBehaviour
     public ButtonManager[] buttons;
 
     public float moveSpeed = 5f;
+    float jumpTime = 0f;
+    float attackTime = 0f;
 
     bool isJump = false;
     bool MoveY = false;
     bool isJumped = false;
+    bool isAttack1 = false;
+    bool isAttack2 = false;
 
     void Awake()
     {
@@ -96,11 +100,15 @@ public class PlayerMove : MonoBehaviour
 
         if (buttons[2].isPush)
         {
+            if(!isAttack1)
+            isAttack1 = true;
         }
         else
         {
+
         }
 
+        
         if (buttons[3].isPush)
         {
             if (!isJump)
@@ -114,17 +122,43 @@ public class PlayerMove : MonoBehaviour
         {
         }
 
-        if(buttons[0].isPush == true || buttons[1].isPush == true)
+        if(buttons[0].isPush || buttons[1].isPush)
         {
             anim.SetBool("MoveX", true);
+
         }
         else
         {
             anim.SetBool("MoveX", false);
         }
+        
+        if(isJump)
+        {
+            jumpTime += Time.deltaTime;
 
+            if(jumpTime >= 0.1f)
+            {
+                isJumped = true;
+                anim.SetBool("IsJumped", isJumped);
+                jumpTime = 0f;
+            }
+        }
+
+        if(isAttack1)
+        {
+            
+
+            attackTime += Time.deltaTime;
+
+            if(attackTime >= 0.5f)
+            {
+                isAttack1 = false;
+                attackTime = 0f;
+            }
+        }
+        
+        anim.SetBool("IsAttack1", isAttack1);
         anim.SetBool("MoveY", MoveY);
-        anim.SetBool("IsJumped", isJumped);
     }
 
     void JumpTrue()
@@ -137,6 +171,9 @@ public class PlayerMove : MonoBehaviour
         if(other.gameObject.tag == "GROUND")
         {
             isJump = false;
+            isJumped = false;
+            MoveY = false;
+            anim.SetBool("IsJumped", isJumped);
         }
     }
 }
