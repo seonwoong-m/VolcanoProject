@@ -14,13 +14,10 @@ public class PlayerMove : MonoBehaviour
 
     public float moveSpeed = 5f;
     float jumpTime = 0f;
-    float attackTime = 0f;
 
     bool isJump = false;
     bool MoveY = false;
     bool isJumped = false;
-    bool isAttack1 = false;
-    bool isAttack2 = false;
 
     void Awake()
     {
@@ -100,8 +97,7 @@ public class PlayerMove : MonoBehaviour
 
         if (buttons[2].isPush)
         {
-            if(!isAttack1)
-            isAttack1 = true;
+
         }
         else
         {
@@ -131,6 +127,12 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetBool("MoveX", false);
         }
+
+        if(buttons[0].isPush && buttons[1].isPush)
+        {
+            anim.SetBool("MoveX", false);
+
+        }
         
         if(isJump)
         {
@@ -143,21 +145,7 @@ public class PlayerMove : MonoBehaviour
                 jumpTime = 0f;
             }
         }
-
-        if(isAttack1)
-        {
-            
-
-            attackTime += Time.deltaTime;
-
-            if(attackTime >= 0.5f)
-            {
-                isAttack1 = false;
-                attackTime = 0f;
-            }
-        }
         
-        anim.SetBool("IsAttack1", isAttack1);
         anim.SetBool("MoveY", MoveY);
     }
 

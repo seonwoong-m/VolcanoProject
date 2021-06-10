@@ -6,6 +6,6 @@ public class StartBtn : MonoBehaviour
 {
     public void OnClickStart()
     {
-        LoadingSceneManager.LoadScene("MainScene");
+        LoadingSceneManager.LoadScene("VolcanoScene");
     }
 }

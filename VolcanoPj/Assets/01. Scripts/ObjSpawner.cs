@@ -17,7 +17,7 @@ public class ObjSpawner : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if(time >= randTime)
+        if (time >= randTime)
         {
             SpawnObj();
             randTime = Random.Range(0.7f, 1f);
@@ -27,9 +27,28 @@ public class ObjSpawner : MonoBehaviour
 
     void SpawnObj()
     {
-        int r = Random.Range(0, dropObjs.Length);
+        int r = Random.Range(0, 10);
         float randomX = Random.Range(-2.2f, 2.2f);
 
-        Instantiate(dropObjs[r], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+        switch (r)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                Instantiate(dropObjs[0], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                break;
+
+            case 5:
+            case 6:
+                Instantiate(dropObjs[1], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                break;
+            case 7:
+            case 8:
+            case 9:
+                Instantiate(dropObjs[2], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                break;
+        }
     }
 }

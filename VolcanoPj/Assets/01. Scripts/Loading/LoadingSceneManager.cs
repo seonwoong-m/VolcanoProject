@@ -58,8 +58,7 @@ public class LoadingSceneManager : MonoBehaviour
                     yield break;
                 }
             }
+            percent.text = $"{progressBar.fillAmount / 1}%";
         }
-
-        percent.text = $"{progressBar.fillAmount / 1}%";
     }
 }

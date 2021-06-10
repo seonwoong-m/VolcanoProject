@@ -467,6 +467,9 @@ TextureImporter:
   - first:
       213: 2339380908259949609
     second: Fire Bullet Pixel All_154
+  - first:
+      213: -4740247389502553201
+    second: Fire Bullet Pixel All_155
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -497,7 +500,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -533,7 +536,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -545,7 +548,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -557,7 +560,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2126,9 +2129,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 368
-        y: 184
-        width: 64
-        height: 17
+        y: 185
+        width: 32
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3818,6 +3821,27 @@ TextureImporter:
       bones: []
       spriteID: 92c3a2f9a86277020800000000000000
       internalID: 2339380908259949609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Bullet Pixel All_155
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 184
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f834a393d12473eb0800000000000000
+      internalID: -4740247389502553201
       vertices: []
       indices: 
       edges: []
