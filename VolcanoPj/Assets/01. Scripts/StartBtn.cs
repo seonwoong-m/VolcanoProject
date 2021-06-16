@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class StartBtn : MonoBehaviour
 {
+    public string sceneName;
+
     public void OnClickStart()
     {
-        LoadingSceneManager.LoadScene("VolcanoScene");
+        LoadingSceneManager.LoadScene(sceneName);
     }
 }

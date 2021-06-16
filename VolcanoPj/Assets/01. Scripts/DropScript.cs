@@ -7,8 +7,13 @@ public class DropScript : MonoBehaviour
 {
     public float minMass;
     public float maxMass;
+
+    public float minSize;
+    public float maxSize;
     
     public float damage;
+    public int score;
+    public int crystal;
 
     Rigidbody2D dropObj;
 
@@ -20,7 +25,7 @@ public class DropScript : MonoBehaviour
     void Start()
     {
         float r = Random.Range(minMass, maxMass);
-        float s = Random.Range(0.3f, 0.5f);
+        float s = Random.Range(minSize, maxSize);
         gameObject.GetComponent<Transform>().localScale = new Vector3(s * 5, s * 5, 1);
         dropObj.gravityScale = r;
         dropObj.mass = r;
@@ -30,6 +35,8 @@ public class DropScript : MonoBehaviour
     {
         dropObj.gravityScale = 0f;
         dropObj.mass = 0f;
+
+        var component = cols.gameObject.GetComponent<>();
 
         Destroy(this.gameObject);
     }

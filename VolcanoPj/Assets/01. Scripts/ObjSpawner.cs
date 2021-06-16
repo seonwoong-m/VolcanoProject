@@ -10,7 +10,7 @@ public class ObjSpawner : MonoBehaviour
 
     void Start()
     {
-        randTime = Random.Range(0.7f, 1f);
+        randTime = Random.Range(0.8f, 1.2f);
     }
 
     void Update()
@@ -37,15 +37,14 @@ public class ObjSpawner : MonoBehaviour
             case 2:
             case 3:
             case 4:
+            case 5:
                 Instantiate(dropObjs[0], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
                 break;
-
-            case 5:
             case 6:
-                Instantiate(dropObjs[1], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
-                break;
             case 7:
             case 8:
+                Instantiate(dropObjs[1], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                break;
             case 9:
                 Instantiate(dropObjs[2], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
                 break;

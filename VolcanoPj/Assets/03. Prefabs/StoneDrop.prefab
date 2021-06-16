@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4709509068544215698}
   m_Layer: 0
   m_Name: StoneDrop
-  m_TagString: Untagged
+  m_TagString: DROP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,5 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minMass: 0.2
-  maxMass: 0.4
+  maxMass: 0.2
+  minSize: 0.4
+  maxSize: 0.4
   damage: 0

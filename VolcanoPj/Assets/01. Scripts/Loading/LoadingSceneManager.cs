@@ -41,7 +41,7 @@ public class LoadingSceneManager : MonoBehaviour
             if (op.progress < 0.9f)
             {
                 progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, op.progress, timer);
-
+                
                 if (progressBar.fillAmount >= op.progress)
                 {
                     timer = 0f;
@@ -50,7 +50,7 @@ public class LoadingSceneManager : MonoBehaviour
             else
             {
                 progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, 1f, timer);
-
+                percent.text = $"{progressBar.fillAmount * 100:F0}%";
                 if (progressBar.fillAmount == 1.0f)
                 {
                     op.allowSceneActivation = true;
@@ -58,7 +58,7 @@ public class LoadingSceneManager : MonoBehaviour
                     yield break;
                 }
             }
-            percent.text = $"{progressBar.fillAmount / 1}%";
+            
         }
     }
 }

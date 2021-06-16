@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613e9d7a59974e644809c1622ccc235b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMass: 0.3
-  maxMass: 0.5
+  minMass: 0.05
+  maxMass: 0.2
+  minSize: 0.3
+  maxSize: 0.5
   damage: 3
