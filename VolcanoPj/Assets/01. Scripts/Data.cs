@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class JsonSave : MonoBehaviour
 {
-    public int score;
-    public int crystal;
+    
 }
 
 
+//응애

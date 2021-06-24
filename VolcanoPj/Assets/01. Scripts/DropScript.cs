@@ -10,12 +10,13 @@ public class DropScript : MonoBehaviour
 
     public float minSize;
     public float maxSize;
-    
-    public float damage;
+
+    public float time;
     public int score;
-    public int crystal;
 
     Rigidbody2D dropObj;
+    DataManager dataM;
+    Timer timer;
 
     void Awake()
     {
@@ -29,6 +30,8 @@ public class DropScript : MonoBehaviour
         gameObject.GetComponent<Transform>().localScale = new Vector3(s * 5, s * 5, 1);
         dropObj.gravityScale = r;
         dropObj.mass = r;
+        dataM = FindObjectOfType<DataManager>();
+        timer = FindObjectOfType<Timer>();
     }
 
     void OnCollisionEnter2D(Collision2D cols)
@@ -36,7 +39,29 @@ public class DropScript : MonoBehaviour
         dropObj.gravityScale = 0f;
         dropObj.mass = 0f;
 
-        var component = cols.gameObject.GetComponent<>();
+        if (cols.gameObject.CompareTag("PLAYER"))
+        {
+            if (gameObject.CompareTag("DROP"))
+            {
+                dataM.AddDrop();
+            }
+            else if (gameObject.CompareTag("FIRE"))
+            {
+                dataM.AddFIRE();
+            }
+            else if (gameObject.CompareTag("CRYSTAL"))
+            {
+                dataM.AddCrystal();
+            }
+
+            dataM.AddScore(score);
+            timer.currentTime += time;
+        }
+        else
+        {
+            timer.currentTime -= 0.1f;
+        }
+
 
         Destroy(this.gameObject);
     }

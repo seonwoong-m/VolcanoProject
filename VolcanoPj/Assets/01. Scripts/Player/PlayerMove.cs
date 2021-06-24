@@ -12,13 +12,14 @@ public class PlayerMove : MonoBehaviour
     private PlayerInput input;
     private PlayerAnimation playerAnimation;
 
-    public ButtonManager[]  buttons;
+    public ButtonManager[] buttons;
 
     public float moveSpeed = 5f;
     public float jumpTime = 0f;
     public float jumpForce = 5f;
 
     private bool isJump = false;
+    public bool isOver = false;
 
     [Header("바닥 감지 관련")]
     public bool isGround;
@@ -49,7 +50,7 @@ public class PlayerMove : MonoBehaviour
 
         transform.position = Camera.main.ViewportToWorldPoint(pos);
 
-        if(input.isJump)
+        if (input.isJump)
         {
             isJump = true;
         }
@@ -57,32 +58,43 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        float xMove = input.xMove;
 
-        if(xMove > 0)
+        if (isOver)
         {
-            sprite.flipX = false;
+            gameObject.transform.position = new Vector3(0, -2, 0);
+            isGround = true;
+            isJump = false;
         }
-        else if(xMove < 0)
+        else
         {
-            sprite.flipX = true;
+            float xMove = input.xMove;
+
+            if (xMove > 0)
+            {
+                sprite.flipX = false;
+            }
+            else if (xMove < 0)
+            {
+                sprite.flipX = true;
+            }
+
+            isGround = Physics2D.OverlapCircle(groundChecker.position, 0.1f, whatIsGround);
+
+            if (isJump && isGround)
+            {
+                rigid.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                playerAnimation.Jump(); // 애니메이션 점프 재생
+            }
+
+            isJump = false;
+
+            if (isGround && rigid.velocity.y < 0.1f)
+            {
+                playerAnimation.JumpEnd(); // 점핑 애니메이션 끝
+            }
+
+            rigid.velocity = new Vector2(xMove * moveSpeed, rigid.velocity.y);
         }
 
-        isGround = Physics2D.OverlapCircle(groundChecker.position, 0.1f, whatIsGround);
-
-        if(isJump && isGround)
-        {
-            rigid.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            playerAnimation.Jump(); // 애니메이션 점프 재생
-        }
-
-        isJump = false;
-
-        if(isGround && rigid.velocity.y < 0.1f)
-        {
-            playerAnimation.JumpEnd(); // 점핑 애니메이션 끝
-        }
-
-        rigid.velocity = new Vector2(xMove * moveSpeed, rigid.velocity.y);
     }
 }

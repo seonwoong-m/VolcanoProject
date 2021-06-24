@@ -158,4 +158,5 @@ MonoBehaviour:
   maxMass: 0.2
   minSize: 0.3
   maxSize: 0.5
-  damage: 3
+  time: 0.5
+  score: 5

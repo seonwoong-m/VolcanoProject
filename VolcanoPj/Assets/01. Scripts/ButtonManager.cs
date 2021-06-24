@@ -10,6 +10,7 @@ public class ButtonManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public Sprite pushBtnImg;
     public Sprite BtnImg;
+    public RectTransform otherImg;
 
     public bool isPush;
 

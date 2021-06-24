@@ -5,12 +5,17 @@ using UnityEngine;
 public class ObjSpawner : MonoBehaviour
 {
     public GameObject[] dropObjs;
+    GameObject dropObj;
+
+    public List<GameObject> dropList;
+
     float time = 0f;
     float randTime;
 
     void Start()
     {
         randTime = Random.Range(0.8f, 1.2f);
+        dropList = new List<GameObject>();
     }
 
     void Update()
@@ -38,15 +43,18 @@ public class ObjSpawner : MonoBehaviour
             case 3:
             case 4:
             case 5:
-                Instantiate(dropObjs[0], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                dropObj = Instantiate(dropObjs[0], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                dropList.Add(dropObj);
                 break;
             case 6:
             case 7:
             case 8:
-                Instantiate(dropObjs[1], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                dropObj = Instantiate(dropObjs[1], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                dropList.Add(dropObj);
                 break;
             case 9:
-                Instantiate(dropObjs[2], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                dropObj = Instantiate(dropObjs[2], new Vector2(randomX, transform.position.y), Quaternion.Euler(0f, 0f, 270f));
+                dropList.Add(dropObj);
                 break;
         }
     }

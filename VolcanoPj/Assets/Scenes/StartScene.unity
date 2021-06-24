@@ -157,10 +157,10 @@ RectTransform:
   m_Father: {fileID: 420926132}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -733}
-  m_SizeDelta: {x: 490, y: 200}
+  m_AnchorMin: {x: 0.27281484, y: 0.11157407}
+  m_AnchorMax: {x: 0.73251855, y: 0.20585184}
+  m_AnchoredPosition: {x: -3, y: 4}
+  m_SizeDelta: {x: -6, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &279165506
 MonoBehaviour:
@@ -177,6 +177,7 @@ MonoBehaviour:
   button: {fileID: 279165508}
   pushBtnImg: {fileID: 21300000, guid: e10fc0b282fa35d429c0f52585afbedb, type: 3}
   BtnImg: {fileID: 21300000, guid: f76d774fa663b5847ba19eaeed4d3646, type: 3}
+  otherImg: {fileID: 0}
   isPush: 0
 --- !u!114 &279165507
 MonoBehaviour:
@@ -626,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e8cc4a3e102ff4496acb7830c0643c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SelectScene
+  sceneName: VolcanoScene
 --- !u!4 &1053269494
 Transform:
   m_ObjectHideFlags: 0
