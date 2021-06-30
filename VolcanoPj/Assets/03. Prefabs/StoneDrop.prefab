@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4709509068544215700}
   - component: {fileID: 4709509068544215699}
   - component: {fileID: 4709509068544215698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StoneDrop
   m_TagString: CRYSTAL
   m_Icon: {fileID: 0}
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -650734333
+  m_SortingLayer: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1181420182006199285, guid: cfd191c3e70322b43a9eec8acc28a15d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -158,5 +158,5 @@ MonoBehaviour:
   maxMass: 0.2
   minSize: 0.4
   maxSize: 0.4
-  damage: 0
+  time: 0
   score: 0

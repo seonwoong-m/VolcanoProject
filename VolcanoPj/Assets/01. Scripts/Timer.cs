@@ -19,6 +19,7 @@ public class Timer : MonoBehaviour
     public GameObject bottomTouch;
     public GameObject startPanel;
 
+    public JsonData json;
     public PlayerMove playerMove;
     public ObjSpawner spawner;
     public Menu menu;
@@ -27,15 +28,18 @@ public class Timer : MonoBehaviour
     {
         currentTime = defaultTime;
         gameOverPanel.SetActive(false);
+        timeSkill = false;
     }
 
     void Update()
     {
+        
         if(currentTime <= 0)
         {
             gameOverPanel.SetActive(true);
             spawnObj.SetActive(false);
             playerMove.isOver = true;
+            json.SaveJData();
             topTouch.SetActive(true);
             bottomTouch.SetActive(true);
 
@@ -45,6 +49,7 @@ public class Timer : MonoBehaviour
             }
 
             spawner.dropList.Clear();
+            Mathf.Clamp(currentTime, 0, int.MaxValue);
         }
         else 
         {
@@ -64,7 +69,6 @@ public class Timer : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        Mathf.Clamp(currentTime, 0, int.MaxValue);
     }
 
     public void StartGame()

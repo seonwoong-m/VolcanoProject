@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1524534993128209646}
   - component: {fileID: 1524534993128209647}
   - component: {fileID: 1524534993128209644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireDrop
   m_TagString: FIRE
   m_Icon: {fileID: 0}
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -650734333
+  m_SortingLayer: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 2666084660714039702, guid: cfd191c3e70322b43a9eec8acc28a15d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

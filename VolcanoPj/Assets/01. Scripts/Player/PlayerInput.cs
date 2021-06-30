@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
     public bool isDash { get; private set; }
 
     public ButtonManager[]  buttons;
+    public SkillManager skillManager;
 
     void Update()
     {
@@ -71,7 +72,8 @@ public class PlayerInput : MonoBehaviour
 
         if (buttons[2].isPush)
         {
-
+            skillManager.UseSkill();
+            buttons[2].isPush = false;
         }
         else
         {

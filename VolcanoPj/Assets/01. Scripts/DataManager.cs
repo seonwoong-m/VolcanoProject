@@ -3,28 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Data
-{
-    public int score;
-    public int crystal;
-    public int highScore;
-    public int preScore;
-
-    public int speedLv;
-    public int jumpLv;
-}
-
 public class DataManager : MonoBehaviour
 {
     public int score;
-    public int[] reinLv; // 0:DROP 
+    public int[] reinLv; // 0:speed 1:
     public int[] itemAmount;
 
     public Text scoreText;
     public Text[] amountText;
     public Text[] reinLvText;
     
-    public bool[] skillSet = new bool[5];
+    public bool[] bSkill = new bool[3] { false, false, false };
+    public bool[] skillSet = new bool[3] { false, false, false }; // 0:TimeFreeze 1:Giant 2:Sprint
 
     void Start()
     {
@@ -34,6 +24,8 @@ public class DataManager : MonoBehaviour
         }
 
         reinLvText[0].text = $"SPEED UP +{reinLv[0]}";
+        reinLvText[1].text = $"JUMP UP +{reinLv[1]}";
+        reinLvText[2].text = $"TIME UP {reinLv[2]}s";
     }
 
     public void AddScore(int _score)

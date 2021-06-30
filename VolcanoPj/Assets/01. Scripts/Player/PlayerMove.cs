@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     private SpriteRenderer sprite;
     private PlayerInput input;
     private PlayerAnimation playerAnimation;
+    Transform player;
 
     public ButtonManager[] buttons;
 
@@ -20,15 +21,12 @@ public class PlayerMove : MonoBehaviour
 
     private bool isJump = false;
     public bool isOver = false;
+    public bool isBig = false;
 
     [Header("바닥 감지 관련")]
     public bool isGround;
     public Transform groundChecker;
     public LayerMask whatIsGround;
-
-    //bool isJumped = false;
-
-    //private readonly int hashXMove =
 
     void Awake()
     {
@@ -37,10 +35,13 @@ public class PlayerMove : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         input = GetComponent<PlayerInput>();
         playerAnimation = GetComponent<PlayerAnimation>();
+        player = gameObject.transform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        float xMove = input.xMove;
+
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
         if (pos.x <= 0.08f)
             pos.x = 0.08f;
@@ -54,21 +55,18 @@ public class PlayerMove : MonoBehaviour
         {
             isJump = true;
         }
-    }
-
-    void FixedUpdate()
-    {
 
         if (isOver)
         {
-            gameObject.transform.position = new Vector3(0, -2, 0);
+            player.position = new Vector3(0, -2, 0);
+            //rigid.gravityScale = 0f;
+            rigid.velocity = Vector2.zero;
             isGround = true;
             isJump = false;
+            xMove = 0f;
         }
         else
         {
-            float xMove = input.xMove;
-
             if (xMove > 0)
             {
                 sprite.flipX = false;
@@ -94,6 +92,15 @@ public class PlayerMove : MonoBehaviour
             }
 
             rigid.velocity = new Vector2(xMove * moveSpeed, rigid.velocity.y);
+        }
+
+        if(isBig)
+        {
+            player.localScale = new Vector3(2, 2, 1);
+        }
+        else
+        {
+            player.localScale = new Vector3(1.7f, 1.7f, 1);
         }
 
     }
