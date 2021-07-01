@@ -30,6 +30,15 @@ public class ObjSpawner : MonoBehaviour
         }
     }
 
+    public void CheckList(GameObject list)
+    {   
+        for(int i = 0; i < dropList.Count; i++)
+        {
+            if(dropList[i].gameObject == list)
+            dropList.RemoveAt(i);
+        }
+    }
+
     void SpawnObj()
     {
         int r = Random.Range(0, 10);

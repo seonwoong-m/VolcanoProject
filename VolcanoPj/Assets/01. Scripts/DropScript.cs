@@ -17,6 +17,7 @@ public class DropScript : MonoBehaviour
     Rigidbody2D dropObj;
     DataManager dataM;
     Timer timer;
+    ObjSpawner objSpawner;
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class DropScript : MonoBehaviour
         dropObj.mass = r;
         dataM = FindObjectOfType<DataManager>();
         timer = FindObjectOfType<Timer>();
+        objSpawner = FindObjectOfType<ObjSpawner>();
     }
 
     void OnCollisionEnter2D(Collision2D cols)
@@ -62,7 +64,7 @@ public class DropScript : MonoBehaviour
             timer.currentTime -= 0.1f;
         }
 
-
+        objSpawner.CheckList(gameObject);
         Destroy(this.gameObject);
     }
 }

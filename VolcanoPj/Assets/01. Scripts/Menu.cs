@@ -8,12 +8,14 @@ public class Menu : MonoBehaviour
     public bool isStatSt;
     public bool isSkillSt;
     public bool isStartMenu;
+    public bool isOther;
 
     public GameObject menuPanel;
     public GameObject statSPanel;
     public GameObject skillSPanel;
     public GameObject btnPanel;
     public GameObject startPanel;
+    public GameObject otherPanel;
 
     public Timer timer;
 
@@ -23,12 +25,14 @@ public class Menu : MonoBehaviour
         isStatSt = false;
         isSkillSt = false;
         isStartMenu = true;
+        isOther = false;
 
         menuPanel.SetActive(false);
         statSPanel.SetActive(false);
         skillSPanel.SetActive(false);
         btnPanel.SetActive(false);
         startPanel.SetActive(true);
+        otherPanel.SetActive(false);
     }
 
     public void OpenMenu()
@@ -36,6 +40,7 @@ public class Menu : MonoBehaviour
         isMenu = !isMenu;
         isStatSt = false;
         isSkillSt = false;
+        isOther = false;
 
         if(!isStartMenu)
         {
@@ -53,19 +58,27 @@ public class Menu : MonoBehaviour
         {
             isStatSt = true;
             isSkillSt = false;
+            isOther = false;
         }
         
         if(n == 2)
         {
             isStatSt = false;
             isSkillSt = true;
+            isOther = false;
         }
+    }
+
+    public void OpenOther()
+    {
+        isOther = !isOther;
     }
 
     public void BackMenu()
     {
         isStatSt = false;
         isSkillSt = false;
+        isOther = false;
     }
 
     void Update()
@@ -85,19 +98,28 @@ public class Menu : MonoBehaviour
                 statSPanel.SetActive(true);
                 btnPanel.SetActive(false);
                 skillSPanel.SetActive(false);
+                otherPanel.SetActive(false);
             }
             else if(isSkillSt && !isStatSt)
             {
                 statSPanel.SetActive(false);
                 btnPanel.SetActive(false);
                 skillSPanel.SetActive(true);
+                otherPanel.SetActive(false);
             }
             else
             {
                 statSPanel.SetActive(false);
                 btnPanel.SetActive(true);
                 skillSPanel.SetActive(false);
+                otherPanel.SetActive(false);
             }
+
+            if(isOther)
+            {
+                otherPanel.SetActive(true);
+                btnPanel.SetActive(false);
+            }            
         }
         else
         {

@@ -32,6 +32,15 @@ public class SkillManager : MonoBehaviour
     {
         frozenPanel.gameObject.SetActive(false);
         myTimer.timeSkill = false;
+
+        for(int i = 0; i < skillBtn.Length; i++)
+        {
+            if(dataM.bSkill[i])
+            {
+                skillBtn[i].gameObject.SetActive(false);
+                selectBtn[i].gameObject.SetActive(true);
+            }
+        }
     }
 
     public void SkillBuy(int n)
@@ -43,6 +52,10 @@ public class SkillManager : MonoBehaviour
             skillBtn[n].gameObject.SetActive(false);
             selectBtn[n].gameObject.SetActive(true);
             dataM.amountText[2].text = $"{dataM.itemAmount[2]}";
+        }
+        else
+        {
+            return;
         }
     }
 

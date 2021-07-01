@@ -75,11 +75,6 @@ public class PlayerInput : MonoBehaviour
             skillManager.UseSkill();
             buttons[2].isPush = false;
         }
-        else
-        {
-
-        }
-
         
         if (buttons[3].isPush)
         {

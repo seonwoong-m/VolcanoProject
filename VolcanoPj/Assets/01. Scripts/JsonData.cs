@@ -17,6 +17,12 @@ public class MyJsonData
     public bool timeFreeze;
     public bool bigger;
     public bool dash;
+
+    public bool bTime;
+    public bool bGiant;
+    public bool bSprint;
+
+    public bool isEvented;
 }
 
 public class JsonData : MonoBehaviour
@@ -24,33 +30,45 @@ public class JsonData : MonoBehaviour
     public PlayerMove playerMove;
     public Timer timer;
 
-    private MyJsonData myJData = new MyJsonData();
-    private DataManager dataM;
-    private SkillManager skillManager;
+    public MyJsonData myJData;
+    public DataManager dataM;
+    public SkillManager skillManager;
+    public GameManager gameManager;
 
     void Awake()
     {
-        dataM = GetComponent<DataManager>();
-        skillManager = GetComponent<SkillManager>();
+        myJData = new MyJsonData();
 
-        //DataSaveText(myJData, "Data.json");
+        try
+        {
+            MyJsonData myData = DataLoadText<MyJsonData>("Data.json");
 
-        MyJsonData myData = DataLoadText<MyJsonData>("Data.json");
+            myJData = myData;
 
-        myJData = myData;
+            dataM.itemAmount[0] = myJData.dropAmount;
+            dataM.itemAmount[1] = myJData.fireAmount;
+            dataM.itemAmount[2] = myJData.crystalAmount;
 
-        dataM.itemAmount[0] = myJData.dropAmount;
-        dataM.itemAmount[1] = myJData.fireAmount;
-        dataM.itemAmount[2] = myJData.crystalAmount;
+            dataM.reinLv[0] = myJData.dropRein;
+            dataM.reinLv[1] = myJData.fireRein;
+            dataM.reinLv[2] = myJData.crystalRein;
 
-        dataM.reinLv[0] = myJData.dropRein;
-        dataM.reinLv[1] = myJData.fireRein;
-        dataM.reinLv[2] = myJData.crystalRein;
+            dataM.skillSet[0] = myJData.timeFreeze;
+            dataM.skillSet[1] = myJData.bigger;
+            dataM.skillSet[2] = myJData.dash;
 
-        dataM.skillSet[0] = myJData.timeFreeze;
-        dataM.skillSet[1] = myJData.bigger;
-        dataM.skillSet[2] = myJData.dash;
+            dataM.bSkill[0] = myJData.bTime;
+            dataM.bSkill[1] = myJData.bGiant;
+            dataM.bSkill[2] = myJData.bSprint;
+
+            gameManager.isEvented = myJData.isEvented;
+        }
+        catch (NullReferenceException)
+        {
+            return;
+        }
     }
+
     void Start()
     {
         SaveJData();
@@ -69,6 +87,12 @@ public class JsonData : MonoBehaviour
         myJData.timeFreeze = dataM.skillSet[0];
         myJData.bigger = dataM.skillSet[1];
         myJData.dash = dataM.skillSet[2];
+
+        myJData.bTime = dataM.bSkill[0];
+        myJData.bGiant = dataM.bSkill[1];
+        myJData.bSprint = dataM.bSkill[2];
+
+        myJData.isEvented = gameManager.isEvented;
 
         DataSaveText(myJData, "Data.json");
     }

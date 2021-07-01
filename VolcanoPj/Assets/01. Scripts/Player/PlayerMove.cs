@@ -13,15 +13,19 @@ public class PlayerMove : MonoBehaviour
     private PlayerAnimation playerAnimation;
     Transform player;
 
+    public DataManager dataM;
+
     public ButtonManager[] buttons;
 
     public float moveSpeed = 5f;
+    public float tempSpeed;
     public float jumpTime = 0f;
     public float jumpForce = 5f;
 
     private bool isJump = false;
     public bool isOver = false;
     public bool isBig = false;
+    public bool isSprint = false;
 
     [Header("바닥 감지 관련")]
     public bool isGround;
@@ -38,9 +42,25 @@ public class PlayerMove : MonoBehaviour
         player = gameObject.transform;
     }
 
+    void Start()
+    {
+        moveSpeed = moveSpeed  + (dataM.reinLv[0] * 0.05f);
+        tempSpeed = moveSpeed;
+        jumpForce = jumpForce + (dataM.reinLv[1] * 0.03f);
+    }
+
     void FixedUpdate()
     {
         float xMove = input.xMove;
+
+        if(isSprint)
+        {
+            moveSpeed = tempSpeed * 1.2f;
+        }
+        else
+        {
+            moveSpeed = tempSpeed;
+        }
 
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
         if (pos.x <= 0.08f)

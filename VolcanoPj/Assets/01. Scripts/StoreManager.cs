@@ -17,10 +17,14 @@ public class StoreManager : MonoBehaviour
 
     void Start()
     {
+        speedCost = speedCost + (int)(dataM.reinLv[0] * (speedCost * 0.3f));
+        jumpCost = jumpCost + (int)(dataM.reinLv[1] * (jumpCost * 0.3f));
+        timeCost = timeCost + (int)(dataM.reinLv[2] * (timeCost * 0.3f));
+
         costText[0].text = $"{speedCost} DROPS";
         costText[1].text = $"{jumpCost} DROPS";
         costText[2].text = $"{timeCost} FIRES";
-    }
+    } 
 
     public void SpeedUp()
     {

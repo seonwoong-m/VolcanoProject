@@ -23,9 +23,11 @@ public class Timer : MonoBehaviour
     public PlayerMove playerMove;
     public ObjSpawner spawner;
     public Menu menu;
+    public DataManager dataM;
 
     void Start() 
     {
+        defaultTime += dataM.reinLv[2];
         currentTime = defaultTime;
         gameOverPanel.SetActive(false);
         timeSkill = false;
