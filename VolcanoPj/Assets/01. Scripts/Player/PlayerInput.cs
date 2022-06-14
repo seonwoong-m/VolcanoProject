@@ -17,58 +17,15 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            buttons[0].isPush = true;
-        }
-        else
-        {
-            buttons[0].isPush = false;
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            buttons[1].isPush = true;
-        }
-        else
-        {
-            buttons[1].isPush = false;
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            buttons[2].isPush = true;
-        }
-        else
-        {
-            buttons[2].isPush = false;
-        }
-
-        if(Input.GetKey(KeyCode.Space))
-        {
-            buttons[3].isPush = true;
-        }
-        else
-        {
-            buttons[3].isPush = false;
-        }
+        buttons[0].isPush = (Input.GetKey(KeyCode.LeftArrow))  ? true : false;
+        buttons[1].isPush = (Input.GetKey(KeyCode.RightArrow)) ? true : false;
+        buttons[2].isPush = (Input.GetKey(KeyCode.UpArrow))    ? true : false;
+        buttons[3].isPush = (Input.GetKey(KeyCode.Space))      ? true : false;
 #endif
 
-        
-
-
-        if (buttons[0].isPush)
-        {
-            xMove = -1f;
-        }
-        else if (buttons[1].isPush)
-        {
-            xMove = 1f;
-        }
-        else
-        {
-            xMove = 0f;
-        }
+        if (buttons[0].isPush) { xMove = -1f; }
+        else if (buttons[1].isPush) { xMove = 1f; }
+        else { xMove = 0f; }
 
         if (buttons[2].isPush)
         {
@@ -76,13 +33,6 @@ public class PlayerInput : MonoBehaviour
             buttons[2].isPush = false;
         }
         
-        if (buttons[3].isPush)
-        {
-            isJump = true;
-        }
-        else
-        {
-            isJump = false;
-        }
+        isJump = (buttons[3].isPush) ? true : false;
     }
 }
