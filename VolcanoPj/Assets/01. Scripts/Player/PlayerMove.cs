@@ -11,16 +11,16 @@ public class PlayerMove : MonoBehaviour
     private SpriteRenderer sprite;
     private PlayerInput input;
     private PlayerAnimation playerAnimation;
-    Transform player;
+    private Transform player;
 
     public DataManager dataM;
 
     public ButtonManager[] buttons;
 
-    public float moveSpeed = 5f;
-    public float tempSpeed;
-    public float jumpTime = 0f;
-    public float jumpForce = 5f;
+    public float moveSpeed = 5.0f;
+    public float tempSpeed = 0.0f;
+    public float jumpTime  = 0.0f;
+    public float jumpForce = 5.0f;
 
     private bool isJump = false;
     public bool isOver = false;
@@ -32,42 +32,38 @@ public class PlayerMove : MonoBehaviour
     public Transform groundChecker;
     public LayerMask whatIsGround;
 
-    void Awake()
+    private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
-        input = GetComponent<PlayerInput>();
-        playerAnimation = GetComponent<PlayerAnimation>();
-        player = gameObject.transform;
+        InitValue();
     }
 
-    void Start()
+    private void Start()
     {
         moveSpeed = moveSpeed  + (dataM.reinLv[0] * 0.05f);
         tempSpeed = moveSpeed;
         jumpForce = jumpForce + (dataM.reinLv[1] * 0.03f);
     }
 
+    public void InitValue()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+        input = GetComponent<PlayerInput>();
+        playerAnimation = GetComponent<PlayerAnimation>();
+        player = GetComponent<Transform>();
+    }
+
     void FixedUpdate()
     {
         float xMove = input.xMove;
 
-        if(isSprint)
-        {
-            moveSpeed = tempSpeed * 1.2f;
-        }
-        else
-        {
-            moveSpeed = tempSpeed;
-        }
+        moveSpeed = (isSprint) ? tempSpeed * 1.2f : tempSpeed;
 
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        if (pos.x <= 0.08f)
-            pos.x = 0.08f;
 
-        if (pos.x >= 0.92f)
-            pos.x = 0.92f;
+        if (pos.x <= 0.08f) pos.x = 0.08f;
+        if (pos.x >= 0.92f) pos.x = 0.92f;
 
         transform.position = Camera.main.ViewportToWorldPoint(pos);
 
@@ -87,14 +83,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            if (xMove > 0)
-            {
-                sprite.flipX = false;
-            }
-            else if (xMove < 0)
-            {
-                sprite.flipX = true;
-            }
+            sprite.flipX = (xMove < 0) ? true : false;
 
             isGround = Physics2D.OverlapCircle(groundChecker.position, 0.1f, whatIsGround);
 
@@ -106,22 +95,12 @@ public class PlayerMove : MonoBehaviour
 
             isJump = false;
 
-            if (isGround && rigid.velocity.y < 0.1f)
-            {
-                playerAnimation.JumpEnd(); // 점핑 애니메이션 끝
-            }
+            if (isGround && rigid.velocity.y < 0.1f) { playerAnimation.JumpEnd(); // 점핑 애니메이션 끝 }
 
             rigid.velocity = new Vector2(xMove * moveSpeed, rigid.velocity.y);
         }
 
-        if(isBig)
-        {
-            player.localScale = new Vector3(2, 2, 1);
-        }
-        else
-        {
-            player.localScale = new Vector3(1.7f, 1.7f, 1);
-        }
-
+        player.localScale = (isBig) ? new Vector3(2f, 2f, 1f) : new Vector3(1.7f, 1.7f, 1f);
+    }
     }
 }

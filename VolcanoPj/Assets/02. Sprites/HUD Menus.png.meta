@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -304,6 +305,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      HUD Menus_0: 1743849941933654463
+      HUD Menus_1: 7291096671700317025
+      HUD Menus_2: 8796641200209256626
+      HUD Menus_5: -3558242265589027736
+      HUD Menus_3: -595158496127015518
+      HUD Menus_4: 2096328871894934673
+      HUD Menus_6: 7431136118221613948
+      HUD Menus_7: 1132505472081091835
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

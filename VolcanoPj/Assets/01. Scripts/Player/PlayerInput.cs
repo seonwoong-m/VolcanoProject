@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    ///<summary>    ///xml 주석
+    ///<summary>
     ///사용자의 X축 입력값
     ///</summary>
     public float xMove { get; private set; }
